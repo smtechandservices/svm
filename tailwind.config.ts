@@ -11,7 +11,7 @@ const config: Config = {
       colors: {
         accent1: '#0ea5e9',
         accent2: '#10b981',
-        'footer-bg': '#04060A',
+        'footer-bg': '#F8FAFC',
       },
       fontFamily: {
         heading: ['var(--font-heading)', 'sans-serif'],

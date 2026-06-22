@@ -31,7 +31,7 @@ const faqs = [
 ];
 
 const infoCards = [
-  { icon: 'ri-mail-send-line', label: 'Email Address', value: 'support@akinoconnect.com' },
+  { icon: 'ri-mail-send-line', label: 'Email Address', value: 'support@svm.com' },
   { icon: 'ri-map-pin-2-line', label: 'Office Location', value: 'North Delhi, India' },
   { icon: 'ri-time-line', label: 'Business Hours', value: 'Mon – Sat: 9:00 AM – 6:00 PM' },
   { icon: 'ri-customer-service-2-line', label: 'Support Model', value: '24 / 7 Monitoring & Response' },

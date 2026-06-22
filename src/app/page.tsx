@@ -3,6 +3,7 @@ import HeroSlider from '@/components/HeroSlider';
 import SpecializationTabs from '@/components/SpecializationTabs';
 import StatsSection from '@/components/StatsSection';
 import TestimonialsSlider from '@/components/TestimonialsSlider';
+import ClientsMarquee from '@/components/ClientsMarquee';
 
 const featuredServices = [
   {
@@ -41,6 +42,7 @@ const blogPosts = [
     date: 'January 11, 2026',
     title: 'How Business IT Consulting Drives Corporate Valuation',
     desc: 'Modern companies are only as fast as their data pathways. Discover how optimizing storage access, network hops, and hypervisor allocations directly improves company efficiency and ROI.',
+    slug: 'managed-services-vs-in-house-it',
   },
   {
     icon: 'ri-shield-keyhole-line',
@@ -48,6 +50,7 @@ const blogPosts = [
     date: 'January 05, 2026',
     title: "A Beginner's Guide to IT/OT Convergence in Factories",
     desc: 'Bridging information technology with industrial hardware is essential for real-time monitoring. Learn about edge devices, gateway protocols, and safety measures during integration.',
+    slug: 'it-ot-convergence-guide',
   },
 ];
 
@@ -97,6 +100,8 @@ export default function HomePage() {
           <SpecializationTabs />
         </div>
       </section>
+
+      <ClientsMarquee />
 
       {/* Process */}
       <section className="py-24">
@@ -152,7 +157,7 @@ export default function HomePage() {
           </div>
           <div className="grid md:grid-cols-2 gap-8 reveal-stagger">
             {blogPosts.map(b => (
-              <div key={b.title} className="card-glass flex flex-col">
+              <Link key={b.title} href={`/articles/${b.slug}`} className="card-glass flex flex-col group hover:no-underline">
                 <div className="blog-img-wrapper">
                   <i className={`${b.icon} ${b.iconColor} text-5xl`} />
                 </div>
@@ -161,11 +166,14 @@ export default function HomePage() {
                 </span>
                 <h3 className="card-title">{b.title}</h3>
                 <p className="card-desc mb-6 flex-1">{b.desc}</p>
-                <a href="#" className="inline-flex items-center gap-2 font-semibold text-[14px] text-accent1 hover:gap-3 transition-all duration-300">
+                <span className="inline-flex items-center gap-2 font-semibold text-[14px] text-accent1 group-hover:gap-3 transition-all duration-300">
                   Read Article <i className="ri-arrow-right-line" />
-                </a>
-              </div>
+                </span>
+              </Link>
             ))}
+          </div>
+          <div className="text-center mt-12">
+            <Link href="/articles" className="btn-primary">View All Articles</Link>
           </div>
         </div>
       </section>

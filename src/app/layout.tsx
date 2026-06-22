@@ -4,6 +4,7 @@ import './globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ClientInit from '@/components/ClientInit';
+import WhatsAppButton from '@/components/WhatsAppButton';
 
 const outfit = Outfit({
   subsets: ['latin'],
@@ -18,7 +19,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: 'SVM Projects and Consulting | IT Managed Services',
+    default: 'SVM Projects and Consulting',
     template: '%s | SVM Projects and Consulting',
   },
   description:
@@ -39,6 +40,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <main>{children}</main>
         <Footer />
         <ClientInit />
+        <WhatsAppButton />
       </body>
     </html>
   );

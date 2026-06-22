@@ -20,18 +20,18 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-footer-bg border-t border-white/[0.06] pt-20 pb-10 text-sm">
+    <footer className="bg-slate-50 border-t border-black/[0.08] pt-20 pb-10 text-sm">
       <div className="container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-16">
         {/* About */}
         <div>
           <Link href="/" className="flex items-center gap-3 mb-4">
             <Image src="/logo.png" alt="SVM" width={52} height={52} className="h-[52px] w-auto" />
             <span className="flex flex-col leading-tight">
-              <span className="text-[17px] font-extrabold text-white font-heading">SVM Projects and Consulting</span>
-              <span className="text-[11px] font-medium text-accent1 tracking-[0.04em]">-- IT Managed Services --</span>
+              <span className="text-[17px] font-extrabold text-slate-900 font-heading">SVM Projects and Consulting</span>
+              <span className="text-[11px] font-medium text-accent1 tracking-[0.04em]">IT Managed Services</span>
             </span>
           </Link>
-          <p className="text-slate-400 mt-4 leading-relaxed">
+          <p className="text-slate-500 mt-4 leading-relaxed">
             Empowering businesses with modern IT infrastructure solutions, secure networks, database systems, and premium IT/OT engineering services.
           </p>
         </div>
@@ -50,7 +50,7 @@ export default function Footer() {
               ['/contact', 'Contact Us'],
             ].map(([href, label]) => (
               <li key={href}>
-                <Link href={href} className="text-slate-400 hover:text-accent1 hover:pl-1 transition-all duration-300">
+                <Link href={href} className="text-slate-500 hover:text-accent1 hover:pl-1 transition-all duration-300">
                   {label}
                 </Link>
               </li>
@@ -61,13 +61,13 @@ export default function Footer() {
         {/* Info */}
         <div>
           <h4 className="footer-col-title">Support & Info</h4>
-          <p className="flex items-center gap-2 text-slate-400 mb-3">
-            <i className="ri-mail-line text-accent1" /> support@akinoconnect.com
+          <p className="flex items-center gap-2 text-slate-500 mb-3">
+            <i className="ri-mail-line text-accent1" /> support@svm.com
           </p>
-          <p className="flex items-center gap-2 text-slate-400 mb-3">
+          <p className="flex items-center gap-2 text-slate-500 mb-3">
             <i className="ri-map-pin-line text-accent1" /> North Delhi, India
           </p>
-          <p className="flex items-center gap-2 text-slate-400">
+          <p className="flex items-center gap-2 text-slate-500">
             <i className="ri-time-line text-accent1" /> Mon – Sat: 9 AM – 6 PM
           </p>
         </div>
@@ -75,7 +75,7 @@ export default function Footer() {
         {/* Newsletter */}
         <div>
           <h4 className="footer-col-title">Newsletter</h4>
-          <p className="text-slate-400 mb-4 leading-relaxed">
+          <p className="text-slate-500 mb-4 leading-relaxed">
             Subscribe to receive the latest tech insights, guides, and infrastructure audits.
           </p>
           <form className="newsletter-form" onSubmit={handleSubmit}>
@@ -86,7 +86,7 @@ export default function Footer() {
               aria-label="Email for newsletter"
               value={email}
               onChange={e => setEmail(e.target.value)}
-              className="flex-1 bg-white/[0.03] border border-white/[0.08] rounded-full px-5 py-3 text-[14px] text-white placeholder-slate-500 focus:outline-none focus:border-accent1 min-w-0"
+              className="flex-1 bg-white border border-black/[0.10] rounded-full px-5 py-3 text-[14px] text-slate-900 placeholder-slate-400 focus:outline-none focus:border-accent1 min-w-0"
             />
             <button
               type="submit"
@@ -107,7 +107,7 @@ export default function Footer() {
       </div>
 
       {/* Bottom bar */}
-      <div className="container border-t border-white/[0.06] pt-8 flex flex-wrap justify-between items-center gap-5 text-slate-500">
+      <div className="container border-t border-black/[0.08] pt-8 flex flex-wrap justify-between items-center gap-5 text-slate-500">
         <div>Copyright &copy; {year} SVM Projects and Consulting. All Rights Reserved.</div>
         <div className="flex gap-6">
           <a href="#" className="hover:text-accent1 transition-colors">Privacy Policy</a>

@@ -117,7 +117,7 @@
   }
 
   .footer-col-title {
-    @apply text-[16px] font-bold uppercase tracking-[1px] mb-6 text-white font-heading;
+    @apply text-[16px] font-bold uppercase tracking-[1px] mb-6 text-slate-900 font-heading;
   }
 
   .newsletter-form {
@@ -206,7 +206,7 @@
 
 /* ── Scroll to top btn ───────────────────────────────────────── */
 #scroll-top-btn {
-  position: fixed; bottom: 32px; right: 32px;
+  position: fixed; bottom: 92px; right: 26px;
   width: 48px; height: 48px;
   background: linear-gradient(135deg, #0ea5e9, #10b981);
   color: #080B11; border: none; border-radius: 50%;
@@ -250,6 +250,17 @@
     display: flex !important;
   }
   .nav-menu.active { left: 0; }
+}
+
+/* ── Clients marquee ─────────────────────────────────────────── */
+.marquee-track {
+  animation: marquee-scroll 32s linear infinite;
+  width: max-content;
+}
+.marquee-track:hover { animation-play-state: paused; }
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
 }
 
 /* ── Particles canvas ────────────────────────────────────────── */
