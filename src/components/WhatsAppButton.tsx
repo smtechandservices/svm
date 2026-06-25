@@ -1,5 +1,5 @@
 const CONTACTS = [
-  { label: 'Support [IN]', phone: '+91 9876543210' },
+  { label: 'Support [IN]', phone: '+91 9250323946' },
   { label: 'Support [UAE]', phone: '+971 526753757' },
 ];
 
