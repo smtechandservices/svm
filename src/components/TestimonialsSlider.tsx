@@ -4,20 +4,20 @@ import { useState, useEffect } from 'react';
 const testimonials = [
   {
     text: "“Our financial strategy focuses on transparency, integrity, and long-term value creation. We aim to maintain resilience, improve efficiency, and invest smartly to stay future-ready and ensure sustainable success in an ever-changing business environment.”",
-    author: 'Rajesh Gupta',
-    role: 'CFO',
+    author: 'Vinod Sharma',
+    role: 'VP of Sales',
     rating: 5,
   },
   {
     text: "“We believe in open and consistent communication across all levels. This reduces misunderstandings, enhances decision-making, and ensures alignment within teams, helping us maintain a collaborative culture that drives success throughout the entire organization.”",
-    author: 'RK Sharma',
+    author: 'Satya Narayan Sharma',
     role: 'Director',
     rating: 5,
   },
   {
     text: "“Our core values and behaviours guide everything we do. By aligning them with our strategic goals, we remain committed to excellence, empower strong performance, and consistently deliver results that exceed the expectations of our stakeholders and partners.”",
     author: 'Vinod Sharma',
-    role: 'Head-Managed Services',
+    role: 'VP of Sales',
     rating: 5,
   },
 ];

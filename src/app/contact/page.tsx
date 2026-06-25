@@ -1,5 +1,6 @@
 'use client';
-import { useState } from 'react';
+import { useState, Suspense, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
 import PageBanner from '@/components/PageBanner';
 
 const faqs = [
@@ -17,13 +18,21 @@ const faqs = [
   },
   {
     q: 'What regions do you serve?',
-    a: 'We serve enterprises across India, with active deployments in major hubs including Delhi NCR, Mumbai, Bangalore, Chennai, and Hyderabad.',
+    a: 'We serve enterprises across India and the UAE, with active deployments in major hubs including Delhi NCR, Mumbai, Bangalore, Chennai, Hyderabad, and Dubai.',
   },
 ];
 
-export default function ContactPage() {
+function ContactContent() {
   const [openFaq, setOpenFaq] = useState<number>(0);
   const [status, setStatus] = useState<'idle' | 'loading' | 'done'>('idle');
+  
+  const searchParams = useSearchParams();
+  const querySubject = searchParams.get('subject') || '';
+  const [subject, setSubject] = useState(querySubject);
+
+  useEffect(() => {
+    if (querySubject) setSubject(querySubject);
+  }, [querySubject]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -57,9 +66,21 @@ export default function ContactPage() {
                     <i className="ri-map-pin-line" />
                   </div>
                   <div>
-                    <h4 className="font-bold font-heading text-slate-heading text-[16px] mb-1">Corporate Office</h4>
+                    <h4 className="font-bold font-heading text-slate-heading text-[16px] mb-1">Head Office</h4>
                     <p className="text-slate-body text-[14px] leading-relaxed">
-                      Tower B, Tech Park, Sector 62,<br />Noida, Delhi NCR - 201301, India
+                      U-23, Budh Vihar Phase 1,<br />Delhi 110086, India
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex gap-4 p-5 rounded-2xl bg-white border border-[rgba(8,60,98,0.08)] shadow-card hover-float">
+                  <div className="w-12 h-12 rounded-full flex items-center justify-center bg-powder text-navy text-[20px] flex-shrink-0">
+                    <i className="ri-map-pin-user-line" />
+                  </div>
+                  <div>
+                    <h4 className="font-bold font-heading text-slate-heading text-[16px] mb-1">Rep Office</h4>
+                    <p className="text-slate-body text-[14px] leading-relaxed">
+                      306, 3rd floor Al Kazim building<br />Burjuman
                     </p>
                   </div>
                 </div>
@@ -70,8 +91,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h4 className="font-bold font-heading text-slate-heading text-[16px] mb-1">Email Us</h4>
-                    <a href="mailto:info@svm.com" className="text-slate-body text-[14px] hover:text-navy transition-colors">info@svm.com</a><br />
-                    <a href="mailto:support@svm.com" className="text-slate-body text-[14px] hover:text-navy transition-colors">support@svm.com</a>
+                    <a href="mailto:info@svmsystem.com" className="text-slate-body text-[14px] hover:text-navy transition-colors">info@svmsystem.com</a>
                   </div>
                 </div>
 
@@ -81,8 +101,12 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h4 className="font-bold font-heading text-slate-heading text-[16px] mb-1">Call Us</h4>
-                    <a href="tel:+919876543210" className="text-slate-body text-[14px] hover:text-navy transition-colors">+91 98765 43210</a><br />
-                    <span className="text-slate-body text-[14px] block mt-1">Mon - Sat: 9:00 AM - 6:00 PM</span>
+                    <div className="text-slate-body text-[14px] mb-1">
+                      <span className="font-semibold text-navy">India:</span> <a href="tel:+919250323946" className="hover:text-navy transition-colors">+91 9250323946</a>
+                    </div>
+                    <div className="text-slate-body text-[14px]">
+                      <span className="font-semibold text-navy">Dubai:</span> <a href="tel:+971526753756" className="hover:text-navy transition-colors">+971 526753756</a>, <a href="tel:+971555830698" className="hover:text-navy transition-colors">+971 555830698</a>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -108,8 +132,11 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <label className="block text-[13px] font-bold text-slate-heading mb-2">Subject</label>
-                  <select required className="w-full bg-[#F5F4EF] border border-[rgba(8,60,98,0.1)] rounded-xl px-4 py-3 text-[14px] focus:outline-none focus:border-navy transition-colors">
+                  <select required value={subject} onChange={(e) => setSubject(e.target.value)} className="w-full bg-[#F5F4EF] border border-[rgba(8,60,98,0.1)] rounded-xl px-4 py-3 text-[14px] focus:outline-none focus:border-navy transition-colors">
                     <option value="">Select an inquiry type</option>
+                    {querySubject && !['IT Services', 'Network Design', 'SAP', 'Hardware', 'Other'].includes(querySubject) && (
+                      <option value={querySubject}>{querySubject}</option>
+                    )}
                     <option value="IT Services">Managed IT Services</option>
                     <option value="Network Design">Network Design</option>
                     <option value="SAP">SAP Implementation</option>
@@ -141,7 +168,7 @@ export default function ContactPage() {
               Our engineers are deployed across India to provide rapid on-site support when remote troubleshooting isn't enough.
             </p>
             <div className="flex flex-wrap justify-center gap-4 relative z-10">
-              {['Delhi NCR', 'Mumbai', 'Bangalore', 'Chennai', 'Hyderabad', 'Pune'].map(city => (
+              {['Delhi NCR', 'Mumbai', 'Bangalore', 'Chennai', 'Hyderabad', 'Pune', 'Dubai'].map(city => (
                 <div key={city} className="flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-5 py-2 text-[14px] text-white font-medium">
                   <i className="ri-map-pin-2-fill text-powder" /> {city}
                 </div>
@@ -181,5 +208,13 @@ export default function ContactPage() {
         </div>
       </section>
     </>
+  );
+}
+
+export default function ContactPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-[#F5F4EF]" />}>
+      <ContactContent />
+    </Suspense>
   );
 }

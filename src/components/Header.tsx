@@ -78,7 +78,7 @@ export default function Header() {
     <>
       {/* Announcement bar */}
       <div className="announcement-bar hidden md:block">
-        🇮🇳 &nbsp; Serving enterprises across India — Delhi · Mumbai · Bangalore · Chennai · Hyderabad
+        🇮🇳 🇦🇪 &nbsp; Serving enterprises across India & UAE — Delhi · Mumbai · Bangalore · Chennai · Hyderabad · Dubai
       </div>
 
       <header

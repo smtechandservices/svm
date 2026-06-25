@@ -4,8 +4,9 @@ import PageBanner from '@/components/PageBanner';
 import { productsData } from '../data';
 import type { Metadata } from 'next';
 
-export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
-  const product = productsData.find((p) => p.id === params.slug);
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const product = productsData.find((p) => p.id === slug);
   if (!product) return {};
   
   return {
@@ -14,8 +15,9 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   };
 }
 
-export default function ProductPage({ params }: { params: { slug: string } }) {
-  const product = productsData.find((p) => p.id === params.slug);
+export default async function ProductPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const product = productsData.find((p) => p.id === slug);
 
   if (!product) {
     notFound();

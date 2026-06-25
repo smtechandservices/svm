@@ -105,10 +105,10 @@ export default function AboutPage() {
                 Our financial strategy focuses on transparency, integrity, and long-term value creation. We aim to maintain resilience, improve efficiency, and invest smartly to stay future-ready and ensure sustainable success in an ever-changing business environment.
               </p>
               <div className="flex items-center gap-4 border-t border-white/20 pt-6">
-                <div className="w-12 h-12 rounded-full bg-white text-navy flex items-center justify-center font-bold text-[18px]">R</div>
+                <div className="w-12 h-12 rounded-full bg-white text-navy flex items-center justify-center font-bold text-[18px]">V</div>
                 <div>
-                  <div className="font-bold text-white text-[16px]">Rajesh Gupta</div>
-                  <div className="text-white/70 text-[13px]">CFO</div>
+                  <div className="font-bold text-white text-[16px]">Vinod Sharma</div>
+                  <div className="text-white/70 text-[13px]">VP of Sales</div>
                 </div>
               </div>
             </div>
@@ -119,9 +119,9 @@ export default function AboutPage() {
                 We believe in open and consistent communication across all levels. This reduces misunderstandings, enhances decision-making, and ensures alignment within teams, helping us maintain a collaborative culture that drives success throughout the entire organization.
               </p>
               <div className="flex items-center gap-4 border-t border-white/20 pt-6">
-                <div className="w-12 h-12 rounded-full bg-white text-navy flex items-center justify-center font-bold text-[18px]">R</div>
+                <div className="w-12 h-12 rounded-full bg-white text-navy flex items-center justify-center font-bold text-[18px]">S</div>
                 <div>
-                  <div className="font-bold text-white text-[16px]">RK Sharma</div>
+                  <div className="font-bold text-white text-[16px]">Satya Narayan Sharma</div>
                   <div className="text-white/70 text-[13px]">Director</div>
                 </div>
               </div>

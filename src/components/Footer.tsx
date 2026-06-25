@@ -82,8 +82,9 @@ export default function Footer() {
           <h4 className="footer-col-title">Support & Info</h4>
           <div className="space-y-4">
             {[
-              { icon: 'ri-mail-line', text: 'support@svm.com' },
-              { icon: 'ri-map-pin-line', text: 'North Delhi, India' },
+              { icon: 'ri-mail-line', text: 'info@svmsystem.com' },
+              { icon: 'ri-map-pin-line', text: 'Head Office: U-23, Budh Vihar Phase 1, Delhi 110086, India' },
+              { icon: 'ri-map-pin-line', text: 'Rep Office: 306, 3rd floor Al Kazim building Burjuman' },
               { icon: 'ri-time-line', text: 'Mon – Sat: 9 AM – 6 PM' },
               { icon: 'ri-customer-service-2-line', text: '24/7 Monitoring & Response' },
             ].map(item => (
@@ -97,7 +98,7 @@ export default function Footer() {
             <div className="mt-4 pt-4" style={{ borderTop: '1px solid rgba(8,60,98,0.1)' }}>
               <div className="text-[12px] uppercase tracking-[1px] font-bold text-slate-heading mb-2">Also Serving</div>
               <div className="flex flex-wrap gap-2">
-                {['Mumbai', 'Bangalore', 'Chennai', 'Hyderabad', 'Zirakpur'].map(city => (
+                {['Mumbai', 'Bangalore', 'Chennai', 'Hyderabad', 'Zirakpur', 'Dubai'].map(city => (
                   <span key={city} className="text-[12px] px-2.5 py-1 rounded-full font-medium" style={{ background: 'rgba(8,60,98,0.08)', color: '#083C62' }}>{city}</span>
                 ))}
               </div>

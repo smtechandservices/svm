@@ -82,13 +82,13 @@ export default function SolutionsPage() {
                 {/* Group Grid */}
                 <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                   {group.items.map(item => (
-                    <div key={item.title} className="card p-7 hover-float">
-                      <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style={{ background: '#083C62', color: 'white' }}>
+                    <Link href={`/contact?subject=${encodeURIComponent(item.title)}`} key={item.title} className="card p-7 hover-float block group">
+                      <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-5 transition-transform group-hover:scale-110" style={{ background: '#083C62', color: 'white' }}>
                         <i className={`${item.icon} text-[22px]`} />
                       </div>
-                      <h4 className="font-bold font-heading text-[18px] text-slate-heading mb-3">{item.title}</h4>
+                      <h4 className="font-bold font-heading text-[18px] text-slate-heading mb-3 group-hover:text-navy transition-colors">{item.title}</h4>
                       <p className="text-slate-body text-[14px] leading-relaxed">{item.desc}</p>
-                    </div>
+                    </Link>
                   ))}
                 </div>
               </div>
