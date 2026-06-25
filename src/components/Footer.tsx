@@ -96,7 +96,7 @@ export default function Footer() {
 
             {/* Locations */}
             <div className="mt-4 pt-4" style={{ borderTop: '1px solid rgba(8,60,98,0.1)' }}>
-              <div className="text-[12px] uppercase tracking-[1px] font-bold text-slate-heading mb-2">Also Serving</div>
+              <div className="text-[12px] uppercase tracking-[1px] font-bold text-slate-heading mb-2">Serving in</div>
               <div className="flex flex-wrap gap-2">
                 {['Mumbai', 'Bangalore', 'Chennai', 'Hyderabad', 'Zirakpur', 'Dubai'].map(city => (
                   <span key={city} className="text-[12px] px-2.5 py-1 rounded-full font-medium" style={{ background: 'rgba(8,60,98,0.08)', color: '#083C62' }}>{city}</span>
