@@ -24,8 +24,8 @@ const faqs = [
 
 function ContactContent() {
   const [openFaq, setOpenFaq] = useState<number>(0);
-  const [status, setStatus] = useState<'idle' | 'loading' | 'done'>('idle');
-  
+  const [status, setStatus] = useState<'idle' | 'loading' | 'done' | 'error'>('idle');
+
   const searchParams = useSearchParams();
   const querySubject = searchParams.get('subject') || '';
   const [subject, setSubject] = useState(querySubject);
@@ -34,14 +34,33 @@ function ContactContent() {
     if (querySubject) setSubject(querySubject);
   }, [querySubject]);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setStatus('loading');
-    setTimeout(() => {
-      setStatus('done');
-      (e.target as HTMLFormElement).reset();
-      setTimeout(() => setStatus('idle'), 3000);
-    }, 1500);
+
+    const formData = new FormData(e.currentTarget);
+    formData.append('access_key', process.env.NEXT_PUBLIC_WEB3FORMS_KEY ?? '');
+
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData,
+      });
+      const data = await res.json();
+
+      if (data.success) {
+        setStatus('done');
+        e.currentTarget.reset();
+        setSubject('');
+        setTimeout(() => setStatus('idle'), 4000);
+      } else {
+        setStatus('error');
+        setTimeout(() => setStatus('idle'), 4000);
+      }
+    } catch {
+      setStatus('error');
+      setTimeout(() => setStatus('idle'), 4000);
+    }
   };
 
   return (
@@ -116,23 +135,26 @@ function ContactContent() {
             <div className="card p-8 md:p-10 reveal-right">
               <h3 className="text-[24px] font-bold font-heading text-slate-heading mb-6">Send us a Message</h3>
               <form onSubmit={handleSubmit} className="space-y-5">
+                {/* honeypot */}
+                <input type="checkbox" name="botcheck" className="hidden" />
+
                 <div className="grid md:grid-cols-2 gap-5">
                   <div>
                     <label className="block text-[13px] font-bold text-slate-heading mb-2">First Name</label>
-                    <input type="text" required className="w-full bg-[#F5F4EF] border border-[rgba(8,60,98,0.1)] rounded-xl px-4 py-3 text-[14px] focus:outline-none focus:border-navy transition-colors" />
+                    <input type="text" name="first_name" required className="w-full bg-[#F5F4EF] border border-[rgba(8,60,98,0.1)] rounded-xl px-4 py-3 text-[14px] focus:outline-none focus:border-navy transition-colors" />
                   </div>
                   <div>
                     <label className="block text-[13px] font-bold text-slate-heading mb-2">Last Name</label>
-                    <input type="text" required className="w-full bg-[#F5F4EF] border border-[rgba(8,60,98,0.1)] rounded-xl px-4 py-3 text-[14px] focus:outline-none focus:border-navy transition-colors" />
+                    <input type="text" name="last_name" required className="w-full bg-[#F5F4EF] border border-[rgba(8,60,98,0.1)] rounded-xl px-4 py-3 text-[14px] focus:outline-none focus:border-navy transition-colors" />
                   </div>
                 </div>
                 <div>
                   <label className="block text-[13px] font-bold text-slate-heading mb-2">Business Email</label>
-                  <input type="email" required className="w-full bg-[#F5F4EF] border border-[rgba(8,60,98,0.1)] rounded-xl px-4 py-3 text-[14px] focus:outline-none focus:border-navy transition-colors" />
+                  <input type="email" name="email" required className="w-full bg-[#F5F4EF] border border-[rgba(8,60,98,0.1)] rounded-xl px-4 py-3 text-[14px] focus:outline-none focus:border-navy transition-colors" />
                 </div>
                 <div>
                   <label className="block text-[13px] font-bold text-slate-heading mb-2">Subject</label>
-                  <select required value={subject} onChange={(e) => setSubject(e.target.value)} className="w-full bg-[#F5F4EF] border border-[rgba(8,60,98,0.1)] rounded-xl px-4 py-3 text-[14px] focus:outline-none focus:border-navy transition-colors">
+                  <select name="subject" required value={subject} onChange={(e) => setSubject(e.target.value)} className="w-full bg-[#F5F4EF] border border-[rgba(8,60,98,0.1)] rounded-xl px-4 py-3 text-[14px] focus:outline-none focus:border-navy transition-colors">
                     <option value="">Select an inquiry type</option>
                     {querySubject && !['IT Services', 'Network Design', 'SAP', 'Hardware', 'Other'].includes(querySubject) && (
                       <option value={querySubject}>{querySubject}</option>
@@ -146,10 +168,14 @@ function ContactContent() {
                 </div>
                 <div>
                   <label className="block text-[13px] font-bold text-slate-heading mb-2">Message</label>
-                  <textarea rows={4} required className="w-full bg-[#F5F4EF] border border-[rgba(8,60,98,0.1)] rounded-xl px-4 py-3 text-[14px] focus:outline-none focus:border-navy transition-colors resize-none"></textarea>
+                  <textarea name="message" rows={4} required className="w-full bg-[#F5F4EF] border border-[rgba(8,60,98,0.1)] rounded-xl px-4 py-3 text-[14px] focus:outline-none focus:border-navy transition-colors resize-none"></textarea>
                 </div>
                 <button type="submit" className="btn-primary w-full justify-center" disabled={status === 'loading'}>
-                  {status === 'loading' ? <i className="ri-loader-4-line spin text-xl" /> : status === 'done' ? 'Message Sent!' : 'Send Message'}
+                  {status === 'loading' && <i className="ri-loader-4-line spin text-xl" />}
+                  {status === 'loading' && 'Sending…'}
+                  {status === 'done' && 'Message Sent!'}
+                  {status === 'error' && 'Failed — please try again'}
+                  {status === 'idle' && 'Send Message'}
                 </button>
               </form>
             </div>

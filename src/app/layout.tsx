@@ -24,16 +24,23 @@ export const metadata: Metadata = {
   },
   description:
     'SVM Projects and Consulting empowers businesses with innovative IT infrastructure, network design, cybersecurity, cloud solutions, and SAP services. Expert consulting for modern enterprises.',
+  icons: {
+    icon: '/favicon.png',
+    shortcut: '/favicon.png',
+    apple: '/favicon.png',
+  },
   openGraph: {
     title: 'SVM Projects and Consulting | IT Infrastructure & Managed Services',
     description:
       'Empowering businesses with innovative IT infrastructure, network design, cybersecurity, cloud solutions, and SAP services.',
     type: 'website',
     locale: 'en_IN',
+    images: [{ url: '/favicon.png', width: 512, height: 512 }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'SVM Projects and Consulting | IT Infrastructure & Managed Services',
+    images: ['/favicon.png'],
   },
 };
 
