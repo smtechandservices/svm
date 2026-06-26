@@ -38,7 +38,8 @@ function ContactContent() {
     e.preventDefault();
     setStatus('loading');
 
-    const formData = new FormData(e.currentTarget);
+    const form = e.currentTarget;
+    const formData = new FormData(form);
     formData.append('access_key', process.env.NEXT_PUBLIC_WEB3FORMS_KEY ?? '');
 
     try {
@@ -50,7 +51,7 @@ function ContactContent() {
 
       if (data.success) {
         setStatus('done');
-        e.currentTarget.reset();
+        form.reset();
         setSubject('');
         setTimeout(() => setStatus('idle'), 4000);
       } else {
