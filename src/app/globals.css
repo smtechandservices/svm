@@ -276,7 +276,7 @@
 
 /* ── Scroll to top btn ───────────────────────────────────────── */
 #scroll-top-btn {
-  position: fixed; bottom: 92px; right: 26px;
+  position: fixed; bottom: 140px; right: 26px;
   width: 48px; height: 48px;
   background: #083C62;
   color: white; border: none; border-radius: 50%;
